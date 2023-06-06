@@ -1,5 +1,4 @@
 import * as ol from 'ol'
-import Tile from 'ol/layer/Tile'
 import VectorTile from "ol/layer/VectorTile";
 import { Style, Stroke, Fill } from 'ol/style';
 import * as pmtiles from 'pmtiles';
@@ -8,8 +7,7 @@ import * as pmtiles from 'pmtiles';
 import * as olpmtiles from 'ol-pmtiles';
 import { useGeographic } from 'ol/proj';
 import { useEffect, useRef, useState } from 'react'
-import { CENTER_OF_BC, MapContext, baseMapSource } from './constants'
-import { fromLonLat } from 'ol/proj'
+import { MapContext } from './constants'
 
 pmtiles.PMTiles
 
@@ -26,7 +24,7 @@ export const OpenLayersMap = () => {
     source,
     style: new Style({
       stroke: new Stroke({
-        color: "gray",
+        color: "purple",
         width: 1,
       }),
       fill: new Fill({
@@ -51,13 +49,11 @@ export const OpenLayersMap = () => {
     const mapObject = new ol.Map({
       view: new ol.View({
         center: [172.606201,-43.556510],
-        zoom: 7,
+        zoom: 15,
       }),
       layers: [
         vectorLayer
-      ],
-      overlays: [],
-      controls: []
+      ]
     })
     mapObject.setTarget(mapRef.current)
 
@@ -68,7 +64,7 @@ export const OpenLayersMap = () => {
 
   return (
       <MapContext.Provider value={map}>
-        <div ref={mapRef} style={{width: 1920, height: 1200}}></div>
+        <div ref={mapRef} style={{width: 800, height: 800}}></div>
       </MapContext.Provider>
   )
 }
