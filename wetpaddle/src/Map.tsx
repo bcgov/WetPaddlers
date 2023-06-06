@@ -1,4 +1,4 @@
-import { TileLayer, Marker, Popup } from "react-leaflet"
+import { TileLayer, Popup, LayersControl, LayerGroup, FeatureGroup } from "react-leaflet"
 import { MapContainer } from "react-leaflet/MapContainer"
 import { PMTileLayer } from "./PMTileLayer";
 
@@ -15,7 +15,9 @@ return (
     <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <PMTileLayer/>
+    <LayersControl position="topright">
+            <LayersControl.Overlay name="Custom Layer"><PMTileLayer/></LayersControl.Overlay>
+        </LayersControl>
   </MapContainer>
   </>
   )
