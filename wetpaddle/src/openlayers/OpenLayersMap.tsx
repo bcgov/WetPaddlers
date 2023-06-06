@@ -1,5 +1,4 @@
 import * as ol from 'ol'
-import { defaults as defaultControls } from 'ol/control'
 import Tile from 'ol/layer/Tile'
 import { useEffect, useRef, useState } from 'react'
 import { CENTER_OF_BC, MapContext, baseMapSource } from './constants'
@@ -32,7 +31,7 @@ export const OpenLayersMap = () => {
         })
       ],
       overlays: [],
-      controls: defaultControls()
+      controls: []
     })
     mapObject.setTarget(mapRef.current)
 
@@ -43,7 +42,7 @@ export const OpenLayersMap = () => {
 
   return (
       <MapContext.Provider value={map}>
-        <div ref={mapRef} data-testid="openlayers-map" style={{width: 400, height: 400}}></div>
+        <div ref={mapRef} style={{width: 1920, height: 1200}}></div>
       </MapContext.Provider>
   )
 }
