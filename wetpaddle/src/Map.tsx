@@ -1,5 +1,6 @@
 import { TileLayer, Marker, Popup } from "react-leaflet"
 import { MapContainer } from "react-leaflet/MapContainer"
+import { PMTileLayer } from "./PMTileLayer";
 
 export const ReactMap = (props: any) => {
 const position = [51.505, -0.09]
@@ -14,6 +15,7 @@ return (
     <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
+    <PMTileLayer/>
   </MapContainer>
   </>
   )
