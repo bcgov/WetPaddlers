@@ -41,6 +41,7 @@ spec:
         github-owner: bcgov
         github-repo: WetPaddlers
     spec:
+      replicas: 1
       containers:
         - name: app
           image: wetpaddle-react
@@ -74,11 +75,18 @@ spec:
           ports:
             - containerPort: 5173
               protocol: TCP
+          volumeMounts:
+            - name: temp-volume
+              mountPath: /path/to/mount
           imagePullPolicy: Always
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
+      volumes:
+        - name: temp-volume
+          emptyDir: {}
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+      minReadySeconds: 5
       dnsPolicy: ClusterFirst
       securityContext: {}
       schedulerName: default-scheduler
