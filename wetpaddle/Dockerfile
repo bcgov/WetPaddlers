@@ -1,4 +1,5 @@
 FROM node:18-alpine
+USER 1001
 
 RUN apk update && apk add curl
 
@@ -25,7 +26,9 @@ ENV PATH ${HOME}/node_modules/.bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/us
 
 RUN chgrp -R 0 * && \
     chmod -R g=u *
-    
+
+RUN chown -R 1001:0 *
+
 
 EXPOSE 5173:5173
 CMD [ "npm", "run", "oc"]
