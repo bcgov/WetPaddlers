@@ -31,6 +31,7 @@ body {
 }
 
  ul.nav {
+  background-color: mediumpurple;
   margin-left: 25%;
   width: 50%;
   margin-top: 4%;
@@ -47,6 +48,8 @@ body {
   }
 }
 ul.nav li {
+  position: sticky;
+  z-index: 10000;
   width: 50%;
   padding: 1rem;
   list-style: none;
@@ -70,5 +73,4 @@ ul.nav li.active {
 
 .outlet{
   z-index: -500;
-  position: relative;
 }
