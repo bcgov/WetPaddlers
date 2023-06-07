@@ -3,8 +3,7 @@ FROM node:18-alpine
 RUN apk update && apk add curl
 
 # set variables
-ENV HOME_ROOT=/opt/app-root
-ENV HOME=/opt/app-root/src
+ENV HOME=/opt/app-root
 
 # create source directory
 RUN mkdir -p $HOME
