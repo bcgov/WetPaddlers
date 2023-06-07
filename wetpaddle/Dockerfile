@@ -11,7 +11,7 @@ WORKDIR $HOME
 
 # Bundle app source
 COPY ./ .
-CD wetpaddle
+run cd wetpaddle
 
 RUN pwd
 RUN ls -l
