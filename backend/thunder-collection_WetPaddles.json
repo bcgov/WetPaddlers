@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "WetPaddles",
+    "dateExported": "2023-06-07T20:19:09.211Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "cd6b3711-aa4f-486f-b34f-512d0da113fc",
+            "colId": "b3fd76c2-5147-465d-841c-9b5eba1c8313",
+            "containerId": "",
+            "name": "Root",
+            "url": "http://127.0.0.1:8000/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-07T18:41:36.634Z",
+            "modified": "2023-06-07T18:41:39.749Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6fb03536-f0f0-4924-87f1-d91d5c99c64e",
+            "colId": "b3fd76c2-5147-465d-841c-9b5eba1c8313",
+            "containerId": "",
+            "name": "Geo",
+            "url": "http://127.0.0.1:8000/geo",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-06-07T18:41:49.624Z",
+            "modified": "2023-06-07T20:11:37.095Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n        {\n            \"type\": \"Feature\",\n            \"geometry\": {\n                \"type\": \"Point\",\n                \"coordinates\": [-80.870885, 35.215151]\n            }\n        },\n        {\n            \"type\": \"Feature\",\n            \"geometry\": {\n                \"type\": \"Polygon\",\n                \"coordinates\": [\n                    [\n                        [-80.724878, 35.265454],\n                        [-80.722646, 35.260338],\n                        [-80.720329, 35.260618],\n                        [-80.704793, 35.268397],\n                        [-80.724878, 35.265454]\n                    ]\n                ]\n            }\n        }\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
