@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ATab, FirstTab, SecondTab } from "./AllTabs";
+import { ATab } from "./AllTabs";
 import { ReactMap } from "./Map";
 import { OpenLayersMap } from "./openlayers/OpenLayersMap";
+import PMTilesConverter from "./PMTilesConverter";
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -13,6 +14,25 @@ const Tabs = () => {
   const handleTab2 = () => {
     setActiveTab("tab2");
   };
+
+  const renderSelectedTab = () => {
+    switch(activeTab) {
+      case 'tab1':
+        return (
+          <ReactMap />
+        )
+      case 'tab2':
+        return (
+          <OpenLayersMap/>
+        )
+      case 'tab3':
+      default: {
+        return (
+          <PMTilesConverter/>
+        )
+      }
+    }
+  }
 
   return (
     <div className="Tabs">
@@ -32,16 +52,9 @@ const Tabs = () => {
         </li>
       </ul>
       <div className="outlet">
-        {activeTab === "tab1" ? (
           <ATab>
-            <ReactMap
-            />
+            {renderSelectedTab()}
           </ATab>
-        ) : (
-          <ATab>
-            <OpenLayersMap />
-          </ATab>
-        )}
       </div>
     </div>
   );
