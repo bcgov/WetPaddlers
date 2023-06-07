@@ -4,6 +4,8 @@
 
 `poetry install` (should create a venv for you automatically)
 
+Copy the `.env.sample` to `.env` and configure your object store details
+
 #### Run
 
 `poetry run uvicorn api.main:app --reload`
