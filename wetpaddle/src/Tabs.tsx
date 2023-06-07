@@ -14,6 +14,9 @@ const Tabs = () => {
   const handleTab2 = () => {
     setActiveTab("tab2");
   };
+  const handleTab3 = () => {
+    setActiveTab("tab3");
+  };
 
   const renderSelectedTab = () => {
     switch(activeTab) {
@@ -49,6 +52,12 @@ const Tabs = () => {
           onClick={handleTab2}
         >
           OpenLayers
+        </li>
+        <li
+          className={activeTab === "tab3" ? "active" : ""}
+          onClick={handleTab3}
+        >
+          Converter
         </li>
       </ul>
       <div className="outlet">
