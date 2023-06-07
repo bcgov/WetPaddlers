@@ -3,6 +3,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  justify-content: center;
 }
 .App {
   font-family: sans-serif;
@@ -10,10 +11,66 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+
 }
 #mapid {
   height: 100vh;
   width: 100vw;
+}
+
+.Tabs {
+  
+  top: 10%;
+  left: 50%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  /*background-color: #ffffff; /* Set the background color as needed */
+  color: #E8F0F2;
+  border-radius: 2rem;
+}
+
+ ul.nav {
+  background-color: mediumpurple;
+  margin-left: 25%;
+  width: 50%;
+  margin-top: 4%;
+  margin-bottom: -9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #39A2DB;
+  border-radius: 2rem;
+  padding-left: 0px;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+}
+ul.nav li {
+  position: sticky;
+  z-index: 10000;
+  width: 50%;
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s;
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+ul.nav li:nth-child(2) {
+  border-radius: 0;
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+ul.nav li:hover {
+  background: rgba(50, 224, 196, 0.15);
+}
+ul.nav li.active {
+  background: #39A2DB;
+}
+
+.outlet{
+  z-index: -500;
 }
