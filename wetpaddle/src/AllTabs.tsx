@@ -1,18 +1,8 @@
-import { ReactMap } from './Map';
-import { OpenLayerPlaceholder } from './OpenLayer';
 
-export const FirstTab = () => {
+export const ATab = (props: any) => {
     return (
-      <div className="FirstTab">
-        <ReactMap />
-      </div>
-    );
-  };
-  
-export const SecondTab = () => {
-    return (
-        <div className="SecondTab">
-            <OpenLayerPlaceholder />
+        <div className="FirstTab">
+            {props.children}
         </div>
     );
 };
