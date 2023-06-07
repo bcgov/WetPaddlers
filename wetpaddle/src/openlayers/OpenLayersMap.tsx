@@ -64,7 +64,7 @@ export const OpenLayersMap = () => {
 
   return (
       <MapContext.Provider value={map}>
-        <div ref={mapRef} style={{width: 800, height: 800}}></div>
+        <div ref={mapRef} style={{width: '100vw', height: '100vh'}}></div>
       </MapContext.Provider>
   )
 }
