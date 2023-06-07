@@ -1,48 +1,8 @@
-kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
 metadata:
- name: wetpaddle-react
-    - manager: kubectl-client-side-apply
-      operation: Update
-      apiVersion: apps.openshift.io/v1
-      time: '2023-05-24T17:39:04Z'
-      fieldsType: FieldsV1
-    - manager: openshift-controller-manager
-      operation: Update
-      apiVersion: apps.openshift.io/v1
-      time: '2023-05-24T17:39:05Z'
-      fieldsType: FieldsV1
-    - manager: openshift-controller-manager
-      operation: Update
-      apiVersion: apps.openshift.io/v1
-      time: '2023-06-07T18:07:54Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:status':
-          'f:updatedReplicas': {}
-          'f:readyReplicas': {}
-          'f:conditions':
-            'k:{"type":"Available"}':
-              'f:lastTransitionTime': {}
-              'f:lastUpdateTime': {}
-              'f:message': {}
-              'f:status': {}
-            'k:{"type":"Progressing"}':
-              'f:lastTransitionTime': {}
-              'f:lastUpdateTime': {}
-              'f:message': {}
-              'f:reason': {}
-              'f:status': {}
-          'f:details':
-            'f:causes': {}
-            'f:message': {}
-          'f:replicas': {}
-          'f:availableReplicas': {}
-          'f:observedGeneration': {}
-          'f:unavailableReplicas': {}
-          'f:latestVersion': {}
-      subresource: status
-  namespace: 7068ad-dev
+  name: wetpaddle-react
+  namespace: cb1c00-dev
   labels:
     app: wetpaddle-react
     app-name: wetpaddle-react
@@ -55,14 +15,9 @@ spec:
     type: Recreate
     recreateParams:
       timeoutSeconds: 600
-    resources:
-      limits:
-        cpu: 500m
-        memory: 2Gi
-      requests:
-        cpu: 200m
-        memory: 1Gi
-    activeDeadlineSeconds: 21600
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
   triggers:
     - type: ImageChange
       imageChangeParams:
@@ -71,20 +26,25 @@ spec:
           - wetpaddle-react
         from:
           kind: ImageStreamTag
-          namespace: cb1c00-dev
+          namespace: cb1c00-tools
           name: 'wetpaddle-react:latest'
     - type: ConfigChange
-  replicas: 1
-  revisionHistoryLimit: 10
-  test: false
   selector:
-    deploymentConfig: wetpaddle-react
+    app: wetpaddle-react
   template:
+    metadata:
+      labels:
+        app: wetpaddle-react
+        app-name: wetpaddle-react
+        env-id: deploy
+        env-name: dev
+        github-owner: bcgov
+        github-repo: WetPaddlers
     spec:
-      volumes:
-          emptyDir: {}
       containers:
-        - resources:
+        - name: app
+          image: wetpaddle-react
+          resources:
             limits:
               cpu: 500m
               memory: 2Gi
@@ -94,45 +54,43 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthcheck
-              port: 3030
+              port: 5173
               scheme: HTTP
             initialDelaySeconds: 65
             timeoutSeconds: 20
             periodSeconds: 20
             successThreshold: 1
             failureThreshold: 10
-          terminationMessagePath: /dev/termination-log
-          name: app
           livenessProbe:
             httpGet:
               path: /healthcheck
-              port: 3030
+              port: 5173
               scheme: HTTP
             initialDelaySeconds: 65
             timeoutSeconds: 20
             periodSeconds: 30
             successThreshold: 1
             failureThreshold: 10
-          env:
           ports:
             - containerPort: 5173
               protocol: TCP
           imagePullPolicy: Always
+          terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
       securityContext: {}
       schedulerName: default-scheduler
-status:
-  observedGeneration: 89
-  details:
-    message: config change
-    causes:
-      - type: ConfigChange
-  availableReplicas: 1
-  unavailableReplicas: 0
-  latestVersion: 52
-  updatedReplicas: 1
-  replicas: 1
-  readyReplicas: 1
+  status:
+    observedGeneration: 89
+    replicas: 1
+    updatedReplicas: 1
+    readyReplicas: 1
+    availableReplicas: 1
+    unavailableReplicas: 0
+    latestVersion: 52
+    details:
+      message: config change
+      causes:
+        - type: ConfigChange
