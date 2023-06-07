@@ -71,7 +71,8 @@ export const OpenLayersMap = () => {
           source
         }),
         vectorLayer
-      ]
+      ],
+      controls: []
     })
     mapObject.setTarget(mapRef.current)
 
