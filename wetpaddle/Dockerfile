@@ -12,7 +12,8 @@ WORKDIR $HOME
 # Bundle app source
 COPY ./ .
 
-RUN PWD
+RUN pwd
+RUN ls -l
 RUN rm -rf node_modules
 run npm install
 
