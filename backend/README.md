@@ -6,6 +6,10 @@
 
 #### Run
 
-` uvicorn main:app --reload`
+`poetry run uvicorn api.main:app --reload`
 
 Verify by `GET`ting the root endpoint at http://127.0.0.1:8000/ and checking the response is: `{"message":"Hello World"}`
+
+#### OAS Spec
+
+http://127.0.0.1:8000/docs
