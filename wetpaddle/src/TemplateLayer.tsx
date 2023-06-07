@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import { useLeafletContext } from '@react-leaflet/core';
 
-export const TemplateLayer = (props: {path: string, symbolizer: protomaps.PolygonLabelSymbolizer }) => {
+export const TemplateLayer = (props: {path: string, symbolizer: protomaps.PolygonSymbolizer, symbolizerLabel: protomaps.PolygonLabelSymbolizer }) => {
   const map = useMap();
   const [layer, setLayer] = React.useState(null);
   const context = useLeafletContext();
@@ -13,26 +13,14 @@ export const TemplateLayer = (props: {path: string, symbolizer: protomaps.Polygo
     const PAINT_RULES = [
       {
         dataLayer: 'tippecanoe_input',
-        symbolizer: new protomaps.PolygonSymbolizer({
-          per_feature: true,
-          fill: (z: number, p: any) => {
-            switch (p.props.code_name) {
-              default:
-                return 'hsl(100,50%,50%)';
-            }
-            //if (z > 16) return 'hsl(100,50%,50%)';
-          },
-          opacity: 0.5,
-          stroke: 'black',
-          width: 1
-        })
+        symbolizer: props.symbolizer
       }
     ];
 
     const LABEL_RULES = [
       {
         dataLayer: 'tippecanoe_input',
-        symbolizer: props.symbolizer
+        symbolizer: props.symbolizerLabel
       }
     ];
 
