@@ -81,7 +81,7 @@ spec:
     type: Git
     git:
       uri: 'https://github.com/bcgov/WetPaddlers.git'
-      ref: dev
+      ref: main
   triggers:
     - type: ConfigChange
     - type: GitHub
