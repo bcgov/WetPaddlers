@@ -32,7 +32,7 @@ const PMTilesConverter = () => {
   }
 
   return (
-    <div style={{height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+    <div style={{height: '100vh', width: '100vw'}}>
       <FileUploader
         multiple={false}
         handleChange={handleChange}
@@ -41,8 +41,8 @@ const PMTilesConverter = () => {
       />
       {
         url && (
-          <div style={{paddingTop: '2em', color: 'black', fontWeight: 'bold'}}>
-            URL to your pmtiles file: <a href={url}>{url}</a>
+          <div>
+            URL to your pmtiles file: {url}
           </div>
         )
       }
