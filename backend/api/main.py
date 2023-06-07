@@ -3,6 +3,7 @@ from fastapi import FastAPI, Response
 from pydantic_geojson import FeatureCollectionModel
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
