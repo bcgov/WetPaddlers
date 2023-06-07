@@ -1,6 +1,7 @@
 import logging
 from fastapi import FastAPI, Response
 from pydantic_geojson import FeatureCollectionModel
+from fastapi.middleware.cors import CORSMiddleware
 from .tippecanoe import process_geojson
 from .object_store import push_to_object_store
 
@@ -9,6 +10,13 @@ logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
