@@ -32,15 +32,15 @@ body {
  ul.nav {
   margin-left: 25%;
   width: 50%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 4%;
+  margin-bottom: -9%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid #39A2DB;
   border-radius: 2rem;
   padding-left: 0px;
-  z-index: 9999; /* Adjust the z-index value as needed */
+
   @media (max-width: 768px) {
     width: 90%;
   }
@@ -65,4 +65,9 @@ ul.nav li:hover {
 }
 ul.nav li.active {
   background: #39A2DB;
+}
+
+.outlet{
+  z-index: -500;
+  position: relative;
 }
