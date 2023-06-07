@@ -23,10 +23,6 @@ VOLUME ${HOME}
 ENV PATH ${HOME}/node_modules/.bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 # run the ionic app in reload mode (will reload on file changes)
 
-RUN chgrp -R 0 .
-RUN chmod -R g=u .
-RUN chown -R 1001:0 .
-
 USER 1001
 
 EXPOSE 5173:5173
