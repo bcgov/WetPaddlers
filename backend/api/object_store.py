@@ -11,7 +11,7 @@ secret_key = config("OBJECT_STORE_SECRET")
 bucket = config("OBJECT_STORE_BUCKET")
 
 
-async def push_to_object_store():
+async def push_to_object_store(name):
     session = get_session()
     async with session.create_client(
         "s3",
@@ -20,7 +20,7 @@ async def push_to_object_store():
         aws_access_key_id=user_id,
     ) as client:
         logger.info("got s3 client")
-        filename = "test.pmtiles"
+        filename = f"{name}.pmtiles"
         folder = "pmtiles"
         key = f"{folder}/{filename}"
         "https://nrs.objectstore.gov.bc.ca/gpdqha/pmtiles/test.pmtiles"

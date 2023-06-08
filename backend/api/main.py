@@ -27,5 +27,6 @@ async def root():
 async def geo(geo: dict, response: Response):
     logger.info("New geo posted: %s", str(geo))
     process_geojson(geo)
-    object_store_url = await push_to_object_store()
+    name=geo.get("name", "unknown")
+    object_store_url = await push_to_object_store(name)
     return {"object_store_url": object_store_url}

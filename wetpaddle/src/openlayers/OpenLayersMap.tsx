@@ -70,7 +70,7 @@ export const OpenLayersMap = () => {
         new Tile({
           source
         }),
-        vectorLayer
+      //  vectorLayer
       ],
       controls: []
     })
