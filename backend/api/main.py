@@ -1,6 +1,5 @@
 import logging
 from fastapi import FastAPI, Response
-from pydantic_geojson import FeatureCollectionModel
 from fastapi.middleware.cors import CORSMiddleware
 from .tippecanoe import process_geojson
 from .object_store import push_to_object_store
@@ -25,7 +24,7 @@ async def root():
 
 
 @app.post("/geo")
-async def geo(geo: FeatureCollectionModel, response: Response):
+async def geo(geo: dict, response: Response):
     logger.info("New geo posted: %s", str(geo))
     process_geojson(geo)
     object_store_url = await push_to_object_store()
