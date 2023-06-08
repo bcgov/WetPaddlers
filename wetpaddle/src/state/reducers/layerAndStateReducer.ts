@@ -6,11 +6,12 @@ import { URL_CHANGE } from "../actions";
 interface Layer {
     name: string
     s3_url: string
-    shape_pain_rules_list_id: number 
+    shape_paint_rules_list_id: number
     label_property: string
+    colour_name: string
 }
 
-const initialState: { url: string, layers: [] } = {
+const initialState: { url: string, layers: Layer[] } = {
   url: '',
   layers: []
 };
