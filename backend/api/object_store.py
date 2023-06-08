@@ -29,6 +29,7 @@ async def push_to_object_store():
                 logger.info('Uploading file to "%s"', key)
                 now = datetime.now().isoformat()
                 resp = await client.put_object(
+                    ACL="public-read",
                     Bucket=bucket,
                     Key=key,
                     Body=f,
