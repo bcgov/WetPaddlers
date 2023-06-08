@@ -19,3 +19,4 @@ async def push_to_object_store():
         aws_access_key_id=user_id,
     ) as client:
         logger.info("got s3 client")
+        return "https://nrs.objectstore.gov.bc.ca/uphjps/riso.pmtiles"
