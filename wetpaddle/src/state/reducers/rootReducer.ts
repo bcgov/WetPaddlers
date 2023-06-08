@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import layerAndURLStateReducer from "./layerAndStateReducer";
+import layerAndURLState from "./layerAndStateReducer";
 
-export const rootReducer = combineReducers({layerAndURLStateReducer})
+export const rootReducer = combineReducers({layerAndURLState})
