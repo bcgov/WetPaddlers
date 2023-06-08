@@ -1,9 +1,7 @@
-FROM node:18-alpine
-
-RUN apk update && apk add curl
+FROM node:18-alpine as builder
 
 # set variables
-ENV HOME=/opt/app-root
+ENV HOME=/build
 
 # create source directory
 RUN mkdir -p $HOME
@@ -11,16 +9,11 @@ WORKDIR $HOME
 
 # Bundle app source
 COPY ./ .
-WORKDIR /opt/app-root/wetpaddle
 
-RUN rm -rf node_modules
 RUN npm install
-RUN chgrp -R 0 .
-RUN chmod -R g+w .
 
-VOLUME ${HOME}
+RUN npm run build
 
-ENV PATH ${HOME}/node_modules/.bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-
-EXPOSE 5173:5173
-CMD [ "npm", "run", "oc"]
+FROM caddy:2.6.4-alpine
+COPY --from=builder /build/Caddyfile /etc/caddy
+COPY --from=builder /build/dist/ /srv/
