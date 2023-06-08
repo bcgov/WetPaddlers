@@ -16,6 +16,7 @@ def process_geojson(feature_collection: dict):
                 "tippecanoe_input.json",
                 "--output=tippecanoe_output.mbtiles",
                 "--no-tile-compression",
+                "--force"
             ],
             check=True,
         )
