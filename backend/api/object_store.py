@@ -25,7 +25,7 @@ async def push_to_object_store():
         key = f"{folder}/{filename}"
         "https://nrs.objectstore.gov.bc.ca/gpdqha/pmtiles/test.pmtiles"
         try:
-            with open("tippecanoe_input.json", "rb") as f:
+            with open("tippecanoe_output.pmtiles", "rb") as f:
                 logger.info('Uploading file to "%s"', key)
                 now = datetime.now().isoformat()
                 resp = await client.put_object(
