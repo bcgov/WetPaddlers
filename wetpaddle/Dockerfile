@@ -11,9 +11,8 @@ WORKDIR $HOME
 COPY ./ .
 
 RUN npm install
-
 RUN npm run build
 
-FROM artifacts.developer.gov.bc.ca/docker-remote/caddy:2.6.4-alpine
+FROM artifacts.developer.gov.bc.ca/docker-remote/caddy:2.6.4
 COPY --from=builder /build/Caddyfile /etc/caddy
 COPY --from=builder /build/dist/ /srv/
