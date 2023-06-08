@@ -1,9 +1,13 @@
 import {useEffect, useState} from 'react'
 import { FileUploader } from 'react-drag-drop-files'
+import namingPrompt from './namingPrompt'
+import NamingPrompt from './namingPrompt'
+
 
 const PMTilesConverter = () => {
   const [file, setFile] = useState<File | null>(null)
   const [url, setUrl] = useState<string>("")
+  const [isUrlSet, setIsUrlSet] = useState(false)
   const handleChange = (file: File) => {
     setFile(file)
   }
@@ -27,11 +31,14 @@ const PMTilesConverter = () => {
     const result = await response.json()
     if (result && result.url) {
       setUrl(result.url)
+      
       console.log(url)
+  
     }
+    setIsUrlSet(true)
   }
-
-  return (
+  return (<>
+    {isUrlSet && <NamingPrompt />}
     <div style={{height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
       <FileUploader
         multiple={false}
@@ -47,6 +54,8 @@ const PMTilesConverter = () => {
         )
       }
     </div>
+   
+   </>
   )
 }
 
