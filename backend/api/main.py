@@ -12,11 +12,12 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins='*',
+    allow_origins="*",
     allow_credentials=True,
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
 
 @app.get("/")
 async def root():
@@ -27,4 +28,5 @@ async def root():
 async def geo(geo: FeatureCollectionModel, response: Response):
     logger.info("New geo posted: %s", str(geo))
     process_geojson(geo)
-    await push_to_object_store()
+    object_store_url = await push_to_object_store()
+    return {"object_store_url": object_store_url}
