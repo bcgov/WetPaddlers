@@ -4,13 +4,7 @@ import { useMap } from 'react-leaflet';
 import { useLeafletContext } from '@react-leaflet/core';
 import { PMTileLayer } from './PMTileLayer';
 
-
-
-export const RISOLayer = (props: any) => {
-
-
-
-  const PAINT_RULES =  [
+  export const PAINT_RULES =  [
     {
       dataLayer: 'tippecanoe_input',
       symbolizer: new protomaps.PolygonSymbolizer({
@@ -28,7 +22,7 @@ export const RISOLayer = (props: any) => {
       })
     }
   ];
-  const LABEL_RULES = [
+  export const LABEL_RULES = [
     {
       dataLayer: 'tippecanoe_input',
       symbolizer: new protomaps.PolygonLabelSymbolizer({
@@ -38,6 +32,12 @@ export const RISOLayer = (props: any) => {
       })
     }
   ];
+
+
+
+export const RISOLayer = (props: any) => {
+
+
 
 
   return <PMTileLayer 
