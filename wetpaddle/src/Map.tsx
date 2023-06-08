@@ -53,7 +53,7 @@ export const ReactMap = (props: any) => {
         <LayersControl position="topright">
           {layerAndURLState.layers && layerAndURLState.layers.map((layer: any) => {
             return (
-              <LayersControl.Overlay key={layer.name} name={layer.name}>
+              <LayersControl.Overlay key={layer.name} name={layer.name} checked={true}>
                 <PMTileLayer
                   URL={layer.s3_url}
                   paintRules={getPaintRules(layer.colour_name)}
