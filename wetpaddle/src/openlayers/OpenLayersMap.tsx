@@ -22,7 +22,7 @@ export const OpenLayersMap = () => {
   const vectorLayer = new VectorTile({
     declutter: true,
     source: new olpmtiles.PMTilesVectorSource({
-      url: "https://r2-public.protomaps.com/protomaps-sample-datasets/nz-buildings-v3.pmtiles",
+      url: "https://nrs.objectstore.gov.bc.ca/gpdqha/pmtiles/test.pmtiles",
       attributions: ["© Land Information New Zealand"],
     }),
     style: new Style({

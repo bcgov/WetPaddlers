@@ -20,7 +20,7 @@ export const ReactMap = (props: any) => {
       <MapContainer center={center} zoom={15} minZoom={0} id="mapid">
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <LayersControl position="topright">
-          {layerAndURLState.layers.map((layer: any) => {
+          {layerAndURLState.layers?.map((layer: any) => {
             return (
               <LayersControl.Overlay key={layer.name} name={layer.name}>
                 <PMTileLayer
