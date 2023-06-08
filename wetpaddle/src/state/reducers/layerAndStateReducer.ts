@@ -29,3 +29,4 @@ export default function layerAndURLState(state = initialState, action: any) {
   }
 }
 
+export const selectMapState = (state: any) => state.layers;

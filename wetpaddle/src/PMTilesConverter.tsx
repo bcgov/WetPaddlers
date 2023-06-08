@@ -6,8 +6,7 @@ import NamingPrompt from './namingPrompt'
 
 const PMTilesConverter = () => {
   const [file, setFile] = useState<File | null>(null)
-  const [url, setUrl] = useState<string>("")
-  const [isUrlSet, setIsUrlSet] = useState(false)
+  const [url, setUrl] = useState<string | null>(null)
   const handleChange = (file: File) => {
     setFile(file)
   }
@@ -29,13 +28,12 @@ const PMTilesConverter = () => {
       }
     });
     const result = await response.json()
+    console.dir(result)
     if (result && result.object_store_url) {
       setUrl(result.object_store_url)
     }
-    setIsUrlSet(true)
   }
   return (<>
-    {isUrlSet && <NamingPrompt />}
     <div style={{height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
       <FileUploader
         multiple={false}
@@ -43,6 +41,7 @@ const PMTilesConverter = () => {
         name="file"
         types={["GEOJSON"]}
       />
+    {url && <NamingPrompt url={url} />}
       {
         url && (
           <div style={{paddingTop: '2em', color: 'black', fontWeight: 'bold'}}>
