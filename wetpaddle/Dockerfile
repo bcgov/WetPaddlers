@@ -1,4 +1,4 @@
-FROM node:18-alpine as builder
+FROM artifacts.developer.gov.bc.ca/docker-remote/node:18-alpine as builder
 
 # set variables
 ENV HOME=/build
@@ -14,6 +14,6 @@ RUN npm install
 
 RUN npm run build
 
-FROM caddy:2.6.4-alpine
+FROM artifacts.developer.gov.bc.ca/docker-remote/caddy:2.6.4-alpine
 COPY --from=builder /build/Caddyfile /etc/caddy
 COPY --from=builder /build/dist/ /srv/
