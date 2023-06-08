@@ -1,11 +1,11 @@
+import json
 import subprocess
-from pydantic_geojson import FeatureCollectionModel
 
 
-def process_geojson(feature_collection: FeatureCollectionModel):
+def process_geojson(feature_collection: dict):
     try:
         with open("tippecanoe_input.json", "w") as f:
-            f.write(feature_collection.json())
+            f.write(json.dumps(feature_collection))
     except Exception as e:
         print(e)
     try:
@@ -13,10 +13,19 @@ def process_geojson(feature_collection: FeatureCollectionModel):
             [
                 "tippecanoe",
                 "-zg",
-                "--projection=EPSG:4326",
                 "tippecanoe_input.json",
-                "--output=tippecanoe_output.pmtiles",
+                "--output=tippecanoe_output.mbtiles",
                 "--no-tile-compression",
+                "--force"
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
+                "pmtiles",
+                "convert",
+                "tippecanoe_output.mbtiles",
+                "tippecanoe_output.pmtiles",
             ],
             check=True,
         )

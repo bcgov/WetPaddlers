@@ -25,9 +25,8 @@ const PMTilesConverter = () => {
       }
     });
     const result = await response.json()
-    if (result && result.url) {
-      setUrl(result.url)
-      console.log(url)
+    if (result && result.object_store_url) {
+      setUrl(result.object_store_url)
     }
   }
 
