@@ -48,7 +48,7 @@ export const ReactMap = (props: any) => {
 
   return (
     <>
-      <MapContainer center={center} zoom={15} minZoom={0} id="mapid">
+      <MapContainer bounds={[[61, -114.03],[48.3, -139.06]]} id="mapid">
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <LayersControl position="topright">
           {layerAndURLState.layers && layerAndURLState.layers.map((layer: any) => {
