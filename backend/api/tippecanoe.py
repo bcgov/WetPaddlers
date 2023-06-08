@@ -13,10 +13,18 @@ def process_geojson(feature_collection: dict):
             [
                 "tippecanoe",
                 "-zg",
-                "--projection=EPSG:4326",
                 "tippecanoe_input.json",
-                "--output=tippecanoe_output.pmtiles",
+                "--output=tippecanoe_output.mbtiles",
                 "--no-tile-compression",
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
+                "pmtiles",
+                "convert",
+                "tippecanoe_output.mbtiles",
+                "tippecanoe_output.pmtiles",
             ],
             check=True,
         )
