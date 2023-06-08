@@ -12,11 +12,9 @@ WORKDIR $HOME
 # Bundle app source
 COPY ./ .
 RUN chgrp -R 0 .
-RUN chmod g+w . -r
+RUN chmod -R g+w .
 WORKDIR /opt/app-root/wetpaddle
 
-RUN pwd
-RUN ls -l
 RUN rm -rf node_modules
 run npm install
 
