@@ -19,19 +19,36 @@ export const OpenLayersMap = () => {
 
   const CENTER_OF_BC = [-123.3656, 51.4484]
 
-  const vectorLayer = new VectorTile({
+  const fireCentres = new VectorTile({
     declutter: true,
     source: new olpmtiles.PMTilesVectorSource({
-      url: "https://nrs.objectstore.gov.bc.ca/gpdqha/pmtiles/test.pmtiles",
+      url: "https://nrs.objectstore.gov.bc.ca/gpdqha/pmtiles/fire_centres.pmtiles",
       attributions: ["© Land Information New Zealand"],
     }),
     style: new Style({
       stroke: new Stroke({
-        color: "purple",
-        width: 1,
+        color: "black",
+        width: 3,
       }),
       fill: new Fill({
-        color: "rgba(20,20,20,0.9)",
+        color: "rgba(20,20,20,0)",
+      }),
+    }),
+  });
+
+  const fireZones = new VectorTile({
+    declutter: true,
+    source: new olpmtiles.PMTilesVectorSource({
+      url: "https://nrs.objectstore.gov.bc.ca/gpdqha/pmtiles/WHSE_LEGAL_ADMIN_BOUNDARIES.DRP_MOF_FIRE_ZONES_SP.pmtiles",
+      attributions: ["© Land Information New Zealand"]
+    }),
+    style: new Style({
+      stroke: new Stroke({
+        color: "black",
+        width: 1.5,
+      }),
+      fill: new Fill({
+        color: "rgba(20,20,20,0)",
       }),
     }),
   });
@@ -70,7 +87,8 @@ export const OpenLayersMap = () => {
         new Tile({
           source
         }),
-      //  vectorLayer
+        fireCentres,
+        fireZones
       ],
       controls: []
     })
